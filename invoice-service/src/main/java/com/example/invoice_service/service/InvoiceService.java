@@ -1,10 +1,8 @@
 package com.example.invoice_service.service;
 
-import com.example.invoice_service.client.BookingClient;
-import com.example.invoice_service.client.ServiceTypeClient;
-import com.example.invoice_service.dto.BookingResponse;
-import com.example.invoice_service.dto.InvoiceResponse;
-import com.example.invoice_service.dto.ServiceTypeResponse;
+import com.example.invoice_service.client.*;
+import com.example.invoice_service.dto.UserResponse;
+import com.example.invoice_service.dto.*;
 import com.example.invoice_service.entity.Invoice;
 import com.example.invoice_service.repository.InvoiceRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +19,10 @@ public class InvoiceService {
         private final InvoiceRepository invoiceRepository;
         private final BookingClient bookingClient;
         private final ServiceTypeClient serviceTypeClient;
+        
+        private final UserClient userClient;
+        private final VehicleClient vehicleClient;
+
 
         public InvoiceResponse generateInvoice(Long bookingId, Long serviceTypeId) {
                 BookingResponse booking = bookingClient.getBookingById(bookingId);
@@ -66,9 +68,14 @@ public class InvoiceService {
         }
 
         private InvoiceResponse toResponse(Invoice invoice, BookingResponse booking, ServiceTypeResponse serviceType) {
+
+                UserResponse user = userClient.getUserById(booking.getUserId());
+                VehicleResponse vehicle = vehicleClient.getOne(booking.getVehicleId());
                 return InvoiceResponse.builder()
                                 .invoiceId(invoice.getId())
                                 .booking(booking)
+                                .userResponse(user)
+                                .vehicleResponse(vehicle)
                                 .serviceType(serviceType)
                                 .totalAmount(invoice.getTotalAmount())
                                 .paymentStatus(invoice.getPaymentStatus())

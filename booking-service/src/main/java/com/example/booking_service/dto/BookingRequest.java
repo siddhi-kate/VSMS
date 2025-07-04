@@ -7,6 +7,7 @@ import java.time.LocalDate;
 public class BookingRequest {
     private Long userId;
     private Long vehicleId;
+    private Long serviceCenterId;
     private LocalDate bookingDate;
     private String status;
 }

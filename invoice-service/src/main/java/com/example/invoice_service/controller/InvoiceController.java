@@ -1,10 +1,12 @@
 package com.example.invoice_service.controller;
 
 import com.example.invoice_service.dto.InvoiceResponse;
+import com.example.invoice_service.dto.InvoiceRequest;
 import com.example.invoice_service.service.InvoiceService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
  
@@ -17,8 +19,8 @@ public class InvoiceController {
     private InvoiceService invoiceService;
  
     @PostMapping
-    public ResponseEntity<InvoiceResponse> generateInvoice(@RequestParam Long bookingId, @RequestParam Long serviceTypeId) {
-        return ResponseEntity.ok(invoiceService.generateInvoice(bookingId, serviceTypeId));
+    public ResponseEntity<InvoiceResponse> generateInvoice(@RequestBody InvoiceRequest invoiceRequest) {
+        return ResponseEntity.ok(invoiceService.generateInvoice(invoiceRequest.getBookingId(), invoiceRequest.getServiceTypeId()));
     }
  
     @GetMapping

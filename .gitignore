@@ -1,0 +1,31 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Logs
+logs/
+*.log
+
+# Environment variables
+.env
+
+# Build directories
+dist/
+build/
+target/
+
+# IDE settings
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Coverage reports
+coverage/
+
+# Docker files
+docker-compose.override.yml
+docker-compose.override.yml

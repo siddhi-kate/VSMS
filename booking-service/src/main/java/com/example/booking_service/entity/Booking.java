@@ -25,6 +25,7 @@ public class Booking {
  
     private Long userId;
     private Long vehicleId;
+    private Long serviceCenterId;
     private LocalDate bookingDate;
     private String status; // e.g. PENDING, CONFIRMED, CANCELLED
 }

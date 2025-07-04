@@ -6,6 +6,8 @@ import lombok.*;
 @Builder
 public class InvoiceResponse {
     private Long invoiceId;
+    private UserResponse userResponse;
+    private VehicleResponse vehicleResponse;
     private BookingResponse booking;
     private ServiceTypeResponse serviceType;
     private Double totalAmount;

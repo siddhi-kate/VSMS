@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class ServiceTypeResponse {
-    private Long serviceTypeId;
     private String description;
     private Double price;
 }

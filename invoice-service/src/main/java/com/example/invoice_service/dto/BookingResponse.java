@@ -7,10 +7,11 @@ import lombok.*;
 @Data
 public class BookingResponse {
     private Long id;
-    UserResponse userResponse;
-    VehicleResponse vehicleResponse;
+    private Long userId;
+    private Long vehicleId;
+    // ServiceCenterResponse serviceCenterResponse;
     // private Long serviceCenterId;
-    private LocalDate date;
-    private String timeSlot;
+    private LocalDate bookingDate;
+    // private String timeSlot;
     private String status;
 }
